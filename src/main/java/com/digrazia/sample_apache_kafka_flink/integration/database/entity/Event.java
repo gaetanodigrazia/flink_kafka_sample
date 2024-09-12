@@ -1,4 +1,4 @@
-package com.digrazia.sample_apache_kafka_flink.business.model.domain;
+package com.digrazia.sample_apache_kafka_flink.integration.database.entity;
 
 public class Event {
     private String eventId;

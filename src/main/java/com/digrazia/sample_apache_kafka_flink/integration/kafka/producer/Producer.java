@@ -1,6 +1,6 @@
-package com.digrazia.kafka_sample.integration.kafka.producer;
+package com.digrazia.sample_apache_kafka_flink.integration.kafka.producer;
 
-import com.digrazia.kafka_sample.business.model.domain.Goal;
+import com.digrazia.sample_apache_kafka_flink.business.model.domain.Goal;
 import org.apache.kafka.clients.admin.NewTopic;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -70,6 +70,30 @@ public class Producer {
         });
 
     }
+
+
+    Thread thread = new Thread(){
+        public void run(){
+            future = this.getKafkaTemplate().send(RESULT_TOPIC, "message");
+            future.whenComplete((result, ex) -> {
+                try {
+                    log.info("Message sent to topic {}", "message");
+                    log.info("Topic {}", future.get().getRecordMetadata().topic());
+                    log.info("Offset {}", future.get().getRecordMetadata().offset());
+                    log.info("Partition {}", future.get().getRecordMetadata().partition());
+                    log.info("Timestamp {}", future.get().getRecordMetadata().timestamp());
+                } catch (InterruptedException e) {
+                    throw new RuntimeException(e);
+                } catch (ExecutionException e) {
+                    throw new RuntimeException(e);
+                }
+            });        }
+
+        private KafkaTemplate<String, String> getKafkaTemplate() {
+            return kafkaTemplate;
+        }
+    };
+
 
     @Bean
     public NewTopic createTopic(){

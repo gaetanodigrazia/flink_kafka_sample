@@ -1,4 +1,4 @@
-package com.digrazia.kafka_sample.integration.kafka.config;
+package com.digrazia.sample_apache_kafka_flink.integration.kafka.config;
 
 public class ConsumerConfig {
 }

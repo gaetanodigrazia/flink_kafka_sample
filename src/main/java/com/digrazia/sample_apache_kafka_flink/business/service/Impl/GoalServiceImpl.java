@@ -1,11 +1,9 @@
-package com.digrazia.kafka_sample.business.service.Impl;
+package com.digrazia.sample_apache_kafka_flink.business.service.Impl;
 
-import com.digrazia.kafka_sample.business.model.domain.Goal;
-import com.digrazia.kafka_sample.business.model.domain.GoalBuilder;
-import com.digrazia.kafka_sample.business.model.domain.GoalBuilderRandom;
-import com.digrazia.kafka_sample.business.service.GoalService;
-import com.digrazia.kafka_sample.integration.kafka.producer.Producer;
-import com.github.javafaker.Faker;
+
+import com.digrazia.sample_apache_kafka_flink.business.model.domain.Goal;
+import com.digrazia.sample_apache_kafka_flink.business.service.GoalService;
+import com.digrazia.sample_apache_kafka_flink.integration.kafka.producer.Producer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -21,13 +19,7 @@ public class GoalServiceImpl implements GoalService {
 
     @Override
     public void sendGoal(String teamName) {
-        Faker faker = new Faker();
-
-        Goal goal = new GoalBuilderRandom()
-                .randomize()
-                .setTeamName("Milan")
-                .setScorerName(faker.name().fullName())
-                .build();
+        Goal goal = new Goal();
 
         producer.sendGoal(goal);
     }

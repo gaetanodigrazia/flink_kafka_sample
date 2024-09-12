@@ -1,7 +1,8 @@
+version: '3.8'
 services:
   zookeeper:
     image: wurstmeister/zookeeper:latest
-    container_name: zookeeper_sample
+    container_name: flink_kafka_zookeeper_sample
     environment:
       ZOOKEEPER_CLIENT_PORT: 2181
       ZOOKEEPER_TICK_TIME: 2000
@@ -12,7 +13,7 @@ services:
   kafka1:
     image: wurstmeister/kafka:latest
     restart: "no"
-    container_name: kafka1_sample
+    container_name: flink_kafka_kafka1_sample
     links:
       - zookeeper
     ports:
@@ -28,7 +29,7 @@ services:
   kafka2:
     image: wurstmeister/kafka:latest
     restart: "no"
-    container_name: kafka2_sample
+    container_name: flink_kafka_kafka2_sample
     links:
       - zookeeper
     ports:
@@ -44,9 +45,9 @@ services:
   kafdrop:
     image: obsidiandynamics/kafdrop
     restart: "no"
-    container_name: kafdrop_sample
+    container_name: flink_kafka_kafdrop_sample
     environment:
-      KAFKA_BROKERCONNECT: "kafka1:29092,kafka2:29093" # A list, or evenly only one broker, to initially connect to in order to avoid all other addresses
+      KAFKA_BROKERCONNECT: "kafka1:29092,kafka2:29093"
     ports:
       - 9000:9000
     depends_on:
@@ -55,14 +56,24 @@ services:
   control-center:
     image: confluentinc/cp-enterprise-control-center:7.3.3
     hostname: control-center
-    container_name: control_center_sample
+    container_name: flink_kafka_control_center_sample
     depends_on:
       - kafka1
       - kafka2
     ports:
       - "9021:9021"
     environment:
-      CONTROL_CENTER_BOOTSTRAP_SERVERS: "kafka1:29092,kafka2:29093" # A list, or evenly only one broker, to initially connect to in order to avoid all other addresses
+      CONTROL_CENTER_BOOTSTRAP_SERVERS: "kafka1:29092,kafka2:29093"
       CONTROL_CENTER_REPLICATION_FACTOR: 1
       CONTROL_CENTER_INTERNAL_TOPICS_PARTITIONS: 1
       CONTROL_CENTER_MONITORING_INTERCEPTOR_TOPIC_PARTITIONS: 1
+  mysql:
+    image: mysql:8.0.33
+    environment:
+      MYSQL_ROOT_PASSWORD: root_password
+      MYSQL_DATABASE: flink_kafka
+      MYSQL_USER: user
+      MYSQL_PASSWORD: user_password
+
+    ports:
+      - "3306:3306"

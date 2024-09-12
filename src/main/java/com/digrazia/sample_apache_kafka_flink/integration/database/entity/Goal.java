@@ -1,8 +1,8 @@
-package com.digrazia.sample_apache_kafka_flink.business.model.domain;
+package com.digrazia.sample_apache_kafka_flink.integration.database.entity;
 
 import java.util.Objects;
 
-public class Goal extends Event{
+public class Goal extends Event {
     private String goalId;
     private String teamName;
     private String scorerName;

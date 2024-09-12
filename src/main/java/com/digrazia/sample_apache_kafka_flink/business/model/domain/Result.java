@@ -1,6 +1,7 @@
-package com.digrazia.kafka_sample.business.model.domain;
+package com.digrazia.sample_apache_kafka_flink.business.model.domain;
 
-import com.rapidBuilder.annotation.field.FieldBuilderProperty;
+
+import org.apache.flink.api.common.serialization.DeserializationSchema;
 
 import java.util.Objects;
 
@@ -8,6 +9,8 @@ public class Result {
     private String resultId;
     private String firstTeamName;
     private String secondTeamName;
+    private String firstTeamId;
+    private String secondTeamId;
     private String result;
     private String gameDescription;
     private String gameType;
@@ -21,7 +24,6 @@ public class Result {
         return resultId;
     }
 
-    @FieldBuilderProperty(builder = true, randomize = true)
     public void setResultId(String resultId) {
         this.resultId = resultId;
     }
@@ -30,7 +32,6 @@ public class Result {
         return firstTeamName;
     }
 
-    @FieldBuilderProperty(builder = true, randomize = true)
     public void setFirstTeamName(String firstTeamName) {
         this.firstTeamName = firstTeamName;
     }
@@ -39,7 +40,6 @@ public class Result {
         return secondTeamName;
     }
 
-    @FieldBuilderProperty(builder = true, randomize = true)
     public void setSecondTeamName(String secondTeamName) {
         this.secondTeamName = secondTeamName;
     }
@@ -48,7 +48,6 @@ public class Result {
         return result;
     }
 
-    @FieldBuilderProperty(builder = true, randomize = true)
     public void setResult(String result) {
         this.result = result;
     }
@@ -57,7 +56,6 @@ public class Result {
         return gameDescription;
     }
 
-    @FieldBuilderProperty(builder = true, randomize = true)
     public void setGameDescription(String gameDescription) {
         this.gameDescription = gameDescription;
     }
@@ -66,7 +64,6 @@ public class Result {
         return gameType;
     }
 
-    @FieldBuilderProperty(builder = true, randomize = true)
     public void setGameType(String gameType) {
         this.gameType = gameType;
     }
@@ -79,9 +76,24 @@ public class Result {
         return gameDate;
     }
 
-    @FieldBuilderProperty(builder = true, randomize = true)
     public void setGameDate(String gameDate) {
         this.gameDate = gameDate;
+    }
+
+    public String getFirstTeamId() {
+        return firstTeamId;
+    }
+
+    public void setFirstTeamId(String firstTeamId) {
+        this.firstTeamId = firstTeamId;
+    }
+
+    public String getSecondTeamId() {
+        return secondTeamId;
+    }
+
+    public void setSecondTeamId(String secondTeamId) {
+        this.secondTeamId = secondTeamId;
     }
 
     @Override
@@ -89,12 +101,12 @@ public class Result {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Result result1 = (Result) o;
-        return Objects.equals(resultId, result1.resultId) && Objects.equals(firstTeamName, result1.firstTeamName) && Objects.equals(secondTeamName, result1.secondTeamName) && Objects.equals(result, result1.result) && Objects.equals(gameDescription, result1.gameDescription) && Objects.equals(gameType, result1.gameType) && Objects.equals(gameStatus, result1.gameStatus) && Objects.equals(gameDate, result1.gameDate);
+        return Objects.equals(resultId, result1.resultId) && Objects.equals(firstTeamName, result1.firstTeamName) && Objects.equals(secondTeamName, result1.secondTeamName) && Objects.equals(firstTeamId, result1.firstTeamId) && Objects.equals(secondTeamId, result1.secondTeamId) && Objects.equals(result, result1.result) && Objects.equals(gameDescription, result1.gameDescription) && Objects.equals(gameType, result1.gameType) && Objects.equals(gameStatus, result1.gameStatus) && Objects.equals(gameDate, result1.gameDate);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(resultId, firstTeamName, secondTeamName, result, gameDescription, gameType, gameStatus, gameDate);
+        return Objects.hash(resultId, firstTeamName, secondTeamName, firstTeamId, secondTeamId, result, gameDescription, gameType, gameStatus, gameDate);
     }
 
     @Override
@@ -103,6 +115,8 @@ public class Result {
                 "resultId='" + resultId + '\'' +
                 ", firstTeamName='" + firstTeamName + '\'' +
                 ", secondTeamName='" + secondTeamName + '\'' +
+                ", firstTeamId='" + firstTeamId + '\'' +
+                ", secondTeamId='" + secondTeamId + '\'' +
                 ", result='" + result + '\'' +
                 ", gameDescription='" + gameDescription + '\'' +
                 ", gameType='" + gameType + '\'' +

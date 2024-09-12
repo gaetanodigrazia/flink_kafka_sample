@@ -1,29 +1,27 @@
-package com.digrazia.sample_apache_kafka_flink.business.model.domain;
+package com.digrazia.sample_apache_kafka_flink.integration.database.entity;
 
 
 import java.util.Objects;
 
-public class Game {
-    private String gameId;
+public class Result {
+    private String resultId;
     private String firstTeamName;
     private String secondTeamName;
+    private String result;
     private String gameDescription;
     private String gameType;
-    private String gameStatus;
+    private final String gameStatus = "FINISHED";
     private String gameDate;
-    private String gameStartTime;
-    private String gameEndTime;
 
-    public Game(){
-
+    public Result() {
     }
 
-    public String getGameId() {
-        return gameId;
+    public String getResultId() {
+        return resultId;
     }
 
-    public void setGameId(String gameId) {
-        this.gameId = gameId;
+    public void setResultId(String resultId) {
+        this.resultId = resultId;
     }
 
     public String getFirstTeamName() {
@@ -40,6 +38,14 @@ public class Game {
 
     public void setSecondTeamName(String secondTeamName) {
         this.secondTeamName = secondTeamName;
+    }
+
+    public String getResult() {
+        return result;
+    }
+
+    public void setResult(String result) {
+        this.result = result;
     }
 
     public String getGameDescription() {
@@ -62,10 +68,6 @@ public class Game {
         return gameStatus;
     }
 
-    public void setGameStatus(String gameStatus) {
-        this.gameStatus = gameStatus;
-    }
-
     public String getGameDate() {
         return gameDate;
     }
@@ -74,47 +76,30 @@ public class Game {
         this.gameDate = gameDate;
     }
 
-    public String getGameStartTime() {
-        return gameStartTime;
-    }
-
-    public void setGameStartTime(String gameStartTime) {
-        this.gameStartTime = gameStartTime;
-    }
-
-    public String getGameEndTime() {
-        return gameEndTime;
-    }
-
-    public void setGameEndTime(String gameEndTime) {
-        this.gameEndTime = gameEndTime;
-    }
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        Game game = (Game) o;
-        return Objects.equals(gameId, game.gameId) && Objects.equals(firstTeamName, game.firstTeamName) && Objects.equals(secondTeamName, game.secondTeamName) && Objects.equals(gameDescription, game.gameDescription) && Objects.equals(gameType, game.gameType) && Objects.equals(gameStatus, game.gameStatus) && Objects.equals(gameDate, game.gameDate) && Objects.equals(gameStartTime, game.gameStartTime) && Objects.equals(gameEndTime, game.gameEndTime);
+        Result result1 = (Result) o;
+        return Objects.equals(resultId, result1.resultId) && Objects.equals(firstTeamName, result1.firstTeamName) && Objects.equals(secondTeamName, result1.secondTeamName) && Objects.equals(result, result1.result) && Objects.equals(gameDescription, result1.gameDescription) && Objects.equals(gameType, result1.gameType) && Objects.equals(gameStatus, result1.gameStatus) && Objects.equals(gameDate, result1.gameDate);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(gameId, firstTeamName, secondTeamName, gameDescription, gameType, gameStatus, gameDate, gameStartTime, gameEndTime);
+        return Objects.hash(resultId, firstTeamName, secondTeamName, result, gameDescription, gameType, gameStatus, gameDate);
     }
 
     @Override
     public String toString() {
-        return "Game{" +
-                "gameId='" + gameId + '\'' +
+        return "Result{" +
+                "resultId='" + resultId + '\'' +
                 ", firstTeamName='" + firstTeamName + '\'' +
                 ", secondTeamName='" + secondTeamName + '\'' +
+                ", result='" + result + '\'' +
                 ", gameDescription='" + gameDescription + '\'' +
                 ", gameType='" + gameType + '\'' +
                 ", gameStatus='" + gameStatus + '\'' +
                 ", gameDate='" + gameDate + '\'' +
-                ", gameStartTime='" + gameStartTime + '\'' +
-                ", gameEndTime='" + gameEndTime + '\'' +
                 '}';
     }
 }

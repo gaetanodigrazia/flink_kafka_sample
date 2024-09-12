@@ -1,4 +1,4 @@
-package com.digrazia.kafka_sample.business.API;
+package com.digrazia.sample_apache_kafka_flink.business.API;
 
 import java.util.concurrent.ExecutionException;
 

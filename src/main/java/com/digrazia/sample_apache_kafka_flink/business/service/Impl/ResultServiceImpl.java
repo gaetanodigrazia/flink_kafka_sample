@@ -1,7 +1,8 @@
-package com.digrazia.kafka_sample.business.service.Impl;
+package com.digrazia.sample_apache_kafka_flink.business.service.Impl;
 
-import com.digrazia.kafka_sample.business.service.ResultService;
-import com.digrazia.kafka_sample.integration.kafka.producer.Producer;
+
+import com.digrazia.sample_apache_kafka_flink.business.service.ResultService;
+import com.digrazia.sample_apache_kafka_flink.integration.kafka.producer.Producer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

@@ -1,4 +1,4 @@
-package com.digrazia.kafka_sample.integration.kafka.consumer;
+package com.digrazia.sample_apache_kafka_flink.integration.kafka.consumer;
 
 import org.springframework.kafka.annotation.KafkaListener;
 import org.springframework.stereotype.Service;

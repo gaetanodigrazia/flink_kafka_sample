@@ -1,7 +1,8 @@
-package com.digrazia.kafka_sample.business.API.controller;
+package com.digrazia.sample_apache_kafka_flink.business.API.controller;
 
-import com.digrazia.kafka_sample.business.API.GoalAPI;
-import com.digrazia.kafka_sample.business.service.GoalService;
+
+import com.digrazia.sample_apache_kafka_flink.business.API.GoalAPI;
+import com.digrazia.sample_apache_kafka_flink.business.service.GoalService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
